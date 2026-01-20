@@ -175,19 +175,22 @@
     <div id="petal-container"></div>
 
     <audio id="weddingMusic" loop>
-        <source src="wedding.mp3" type="audio/mp3">
+        <source src="alex warren - ordinary (wedding version) (lyrics).mp3" type="audio/mp3">
     </audio>
 
     <div id="entry-screen">
-        <div class="entry-box" data-aos="fade-in">
-            <h1 class="font-royal text-glow" style="font-size: 1.5rem; margin-bottom: 10px;">The Wedding Of</h1>
-            <h2 class="font-script" style="font-size: 3rem; margin: 10px 0; color: #fff;">Shivani & Ravi</h2>
-            <input type="text" id="guestName" class="entry-input" placeholder="Enter Your Name">
-            <button class="btn-gold" onclick="unlock()">Enter</button>
+        <div class="entry-box" data-aos="zoom-in" data-aos-duration="1200">
+            <h1 class="font-royal text-gradient" style="margin-bottom: 15px; font-size: 2rem;">Royal Invitation</h1>
+            <p style="color: #ccc; font-family: 'Montserrat'; font-size: 0.9rem;">To unlock, please enter your name:</p>
+            
+            <input type="text" id="guestNameInput" class="entry-input" placeholder="e.g. Rahul Sharma">
+            
+            <button class="btn-gold" onclick="enterWebsite()">Unlock Invitation 🕊️</button>
         </div>
     </div>
 
     <div id="main-content">
+        
         <header class="hero">
             <div class="mandala-bg"></div>
 
@@ -209,12 +212,13 @@
                 February 12, 2026
             </div>
 
-            <div id="countdown">
+             <div id="countdown">
                 <div class="time-box"><span id="d" class="time-val">00</span><span class="time-lbl">Days</span></div>
                 <div class="time-box"><span id="h" class="time-val">00</span><span class="time-lbl">Hrs</span></div>
                 <div class="time-box"><span id="m" class="time-val">00</span><span class="time-lbl">Mins</span></div>
                 <div class="time-box"><span id="s" class="time-val">00</span><span class="time-lbl">Secs</span></div>
             </div>
+            
         </header>
 
         <div class="container">
