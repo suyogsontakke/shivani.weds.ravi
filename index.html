@@ -21,7 +21,7 @@
             --neon-gold: #fff5cc;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; /* Hide default cursor for custom one */ }
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
 
         body {
             background-color: var(--bg-deep);
@@ -34,44 +34,27 @@
             min-height: 100vh;
         }
 
-        /* --- 1. ROYAL FRAME (FIXED BORDER) --- */
+        /* --- 1. ROYAL FRAME --- */
         .royal-frame {
-            position: fixed;
-            top: 15px; left: 15px; right: 15px; bottom: 15px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            pointer-events: none; /* Let clicks pass through */
-            z-index: 999;
-            border-radius: 4px;
+            position: fixed; top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 1px solid rgba(255, 215, 0, 0.3); pointer-events: none; z-index: 999; border-radius: 4px;
         }
         .royal-frame::before {
             content: ''; position: absolute; top: 5px; left: 5px; right: 5px; bottom: 5px;
             border: 1px solid rgba(255, 215, 0, 0.1);
         }
-        /* Corners */
-        .corner {
-            position: absolute; width: 20px; height: 20px;
-            border-color: var(--gold); border-style: solid;
-            pointer-events: none;
-        }
-        .tl { top: 15px; left: 15px; border-width: 2px 0 0 2px; }
-        .tr { top: 15px; right: 15px; border-width: 2px 2px 0 0; }
-        .bl { bottom: 15px; left: 15px; border-width: 0 0 2px 2px; }
-        .br { bottom: 15px; right: 15px; border-width: 0 2px 2px 0; }
+        .corner { position: absolute; width: 15px; height: 15px; border-color: var(--gold); border-style: solid; pointer-events: none; }
+        .tl { top: 10px; left: 10px; border-width: 2px 0 0 2px; }
+        .tr { top: 10px; right: 10px; border-width: 2px 2px 0 0; }
+        .bl { bottom: 10px; left: 10px; border-width: 0 0 2px 2px; }
+        .br { bottom: 10px; right: 10px; border-width: 0 2px 2px 0; }
 
-
-        /* --- 2. CUSTOM GOLD CURSOR --- */
-        #cursor-dot, #cursor-outline {
-            position: fixed; top: 0; left: 0;
-            transform: translate(-50%, -50%); border-radius: 50%;
-            z-index: 9999; pointer-events: none;
-        }
+        /* --- 2. CURSOR --- */
+        #cursor-dot, #cursor-outline { position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999; pointer-events: none; }
         #cursor-dot { width: 8px; height: 8px; background-color: var(--gold); }
-        #cursor-outline {
-            width: 40px; height: 40px; border: 1px solid rgba(255, 215, 0, 0.5);
-            transition: width 0.2s, height 0.2s, background-color 0.2s;
-        }
+        #cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(255, 215, 0, 0.5); transition: 0.2s; }
 
-        /* --- 3. FALLING PETALS --- */
+        /* --- 3. PETALS --- */
         #petal-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
         .petal {
             position: absolute; top: -10%; background: linear-gradient(to right, #d63031, #ff7675);
@@ -91,75 +74,53 @@
         @keyframes rotateMandala { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
 
         /* --- ENTRY SCREEN --- */
-        #entry-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #08020d; z-index: 9999;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 1s;
-        }
-        .entry-box {
-            text-align: center; padding: 50px 30px; border: 1px solid var(--gold-dim); border-radius: 15px;
-            box-shadow: 0 0 40px rgba(0,0,0,0.8); width: 90%; max-width: 400px;
-        }
-        .entry-input {
-            width: 100%; padding: 12px; margin: 25px 0; background: rgba(255,255,255,0.05); border-radius: 5px;
-            border: 1px solid var(--gold-dim); color: #fff; text-align: center; 
-            font-family: 'Raleway', sans-serif; font-size: 1.1rem; outline: none; letter-spacing: 1px;
-            cursor: none; /* Keep custom cursor visible */
-        }
+        #entry-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #08020d; z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 1s; }
+        .entry-box { text-align: center; padding: 40px 20px; border: 1px solid var(--gold-dim); border-radius: 15px; box-shadow: 0 0 40px rgba(0,0,0,0.8); width: 90%; max-width: 400px; }
+        .entry-input { width: 100%; padding: 12px; margin: 25px 0; background: rgba(255,255,255,0.05); border-radius: 5px; border: 1px solid var(--gold-dim); color: #fff; text-align: center; font-family: 'Raleway', sans-serif; font-size: 1.1rem; outline: none; letter-spacing: 1px; cursor: none; }
 
-        /* --- TYPOGRAPHY CLASSES --- */
+        /* --- TYPOGRAPHY --- */
         .font-aesthetic { font-family: 'Cormorant Garamond', serif; letter-spacing: 1px; font-weight: 700; text-transform: uppercase; }
         .font-script { font-family: 'Great Vibes', cursive; }
         .font-marathi { font-family: 'Rozha One', serif; letter-spacing: 1px; }
         .text-glow { color: var(--neon-gold); text-shadow: 0 0 15px rgba(255, 215, 0, 0.4); }
 
-        /* --- HERO --- */
-        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; z-index: 2; padding-top: 50px; }
+        /* --- HERO SECTION --- */
+        .hero { 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            position: relative; 
+            z-index: 2; 
+            padding-top: 50px; 
+        }
         
         .hero-ganesh { width: 180px; animation: float 6s ease-in-out infinite; filter: drop-shadow(0 0 20px var(--gold-dim)); }
         
-        /* NEW LIQUID GOLD NAMES */
         .hero-names { 
-            font-size: 5.5rem; 
-            margin: 10px 0; 
-            line-height: 1.2; 
-            /* Liquid Gold Gradient Effect */
+            font-size: 5.5rem; margin: 10px 0; line-height: 1.2; 
             background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-            background-size: 200% auto;
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            padding: 10px;
-            animation: shine 3s linear infinite;
+            background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+            padding: 10px; animation: shine 3s linear infinite;
         }
         @keyframes shine { to { background-position: 200% center; } }
 
-        /* --- ULTRA CARDS --- */
+        /* --- CARDS & GRID --- */
         .container { max-width: 1100px; margin: 0 auto; padding: 20px; position: relative; z-index: 2; }
         .event-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 60px; margin-top: 60px; justify-content: center; }
 
-        .ultra-card {
-            position: relative; background: rgba(20, 20, 20, 0.6); border-radius: 20px; padding: 3px;
-            overflow: hidden; transform-style: preserve-3d; box-shadow: 0 20px 40px rgba(0,0,0,0.6); transition: transform 0.2s;
-        }
-
-        .ultra-card::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: conic-gradient(transparent, transparent, transparent, var(--gold));
-            animation: rotateBorder 5s linear infinite; z-index: 0;
-        }
+        .ultra-card { position: relative; background: rgba(20, 20, 20, 0.6); border-radius: 20px; padding: 3px; overflow: hidden; transform-style: preserve-3d; box-shadow: 0 20px 40px rgba(0,0,0,0.6); transition: transform 0.2s; }
+        .ultra-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(transparent, transparent, transparent, var(--gold)); animation: rotateBorder 5s linear infinite; z-index: 0; }
         @keyframes rotateBorder { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        .card-inner {
-            position: relative; background: #12081a; border-radius: 18px; padding: 35px 25px;
-            z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: center;
-        }
+        .card-inner { position: relative; background: #12081a; border-radius: 18px; padding: 35px 25px; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: center; }
         .card-img-container { height: 160px; margin-bottom: 25px; }
         .card-img { max-height: 100%; filter: drop-shadow(0 0 10px var(--gold)); animation: levitate 5s ease-in-out infinite; }
         @keyframes levitate { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        .details-box {
-            border-top: 1px solid rgba(255, 215, 0, 0.2); border-bottom: 1px solid rgba(255, 215, 0, 0.2);
-            padding: 20px 0; width: 100%; text-align: left; margin-top: 15px;
-        }
+        .details-box { border-top: 1px solid rgba(255, 215, 0, 0.2); border-bottom: 1px solid rgba(255, 215, 0, 0.2); padding: 20px 0; width: 100%; text-align: left; margin-top: 15px; }
         .details-row { display: flex; align-items: center; margin-bottom: 12px; color: #f0f0f0; font-size: 1.05rem; }
         .icon { color: var(--gold); margin-right: 15px; font-size: 1.2rem; }
 
@@ -170,24 +131,55 @@
         .time-lbl { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-top: 5px; }
 
         /* --- BUTTONS --- */
-        .btn-gold {
-            background: linear-gradient(45deg, #b8860b, #ffd700); color: #000; border: none; padding: 15px 50px;
-            font-family: 'Cormorant Garamond', serif; text-transform: uppercase; font-weight: 700; letter-spacing: 2px;
-            font-size: 1.1rem; cursor: pointer; transition: 0.4s; border-radius: 50px;
-            cursor: none; /* Custom cursor */
-        }
+        .btn-gold { background: linear-gradient(45deg, #b8860b, #ffd700); color: #000; border: none; padding: 15px 50px; font-family: 'Cormorant Garamond', serif; text-transform: uppercase; font-weight: 700; letter-spacing: 2px; font-size: 1.1rem; cursor: pointer; transition: 0.4s; border-radius: 50px; cursor: none; }
         .btn-gold:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 215, 0, 0.5); }
 
-        /* --- MAP --- */
-        iframe { width: 100%; height: 350px; border-radius: 15px; border: 1px solid var(--gold-dim); filter: invert(90%) hue-rotate(180deg) contrast(90%); cursor: auto; /* Reset cursor for map */ }
+        iframe { width: 100%; height: 350px; border-radius: 15px; border: 1px solid var(--gold-dim); filter: invert(90%) hue-rotate(180deg) contrast(90%); cursor: auto; }
 
-        /* Mobile */
+        /* --- MOBILE FIXES --- */
         @media(max-width:768px){ 
-            .hero-names{font-size:3.8rem;} 
-            .mandala-bg{width:180vw;height:180vw;} 
-            .font-aesthetic { font-size: 1.8rem; }
-            #cursor-dot, #cursor-outline { display: none; } /* No custom cursor on phone */
-            * { cursor: auto; } /* Reset cursor on phone */
+            /* Let the hero section flow naturally, don't force center */
+            .hero {
+                min-height: 100vh;
+                height: auto;
+                justify-content: flex-start; 
+                padding-top: 120px; /* Space for top elements */
+                padding-bottom: 50px;
+            }
+            
+            /* Fix the Names overlap */
+            .hero-names { 
+                font-size: 3.2rem; /* Much smaller */
+                margin: 20px 0;
+            }
+            
+            /* Add spacing to Greeting */
+            #greeting {
+                margin-top: 20px;
+                margin-bottom: 20px;
+                font-size: 1.2rem;
+            }
+
+            /* Adjust Shlokas */
+            .font-marathi { font-size: 0.9rem; }
+            
+            /* Adjust Date */
+            .hero p.font-aesthetic { font-size: 1.1rem; margin-top: 15px; }
+
+            /* Fix Countdown Grid */
+            #countdown { gap: 10px; flex-wrap: wrap; }
+            .time-box { min-width: 60px; padding: 5px; }
+            .time-val { font-size: 1.5rem; }
+
+            /* Mandala size */
+            .mandala-bg { width: 100vw; height: 100vw; opacity: 0.15; }
+
+            /* Disable custom cursor on phone */
+            #cursor-dot, #cursor-outline { display: none !important; }
+            * { cursor: auto !important; }
+            
+            /* Event Cards */
+            .event-grid { gap: 40px; }
         }
     </style>
 </head>
@@ -208,8 +200,8 @@
 
     <div id="entry-screen">
         <div class="entry-box" data-aos="fade-in">
-            <h1 class="font-aesthetic text-glow" style="font-size: 1.8rem; margin-bottom: 10px;">The Wedding Of</h1>
-            <h2 class="font-script" style="font-size: 3.5rem; margin: 10px 0; color: #fff;">Shivani & Ravi</h2>
+            <h1 class="font-aesthetic text-glow" style="font-size: 1.5rem; margin-bottom: 10px;">The Wedding Of</h1>
+            <h2 class="font-script" style="font-size: 3rem; margin: 10px 0; color: #fff;">Shivani & Ravi</h2>
             <input type="text" id="guestName" class="entry-input" placeholder="Enter Your Name">
             <button class="btn-gold" onclick="unlock()">Enter</button>
         </div>
@@ -220,16 +212,16 @@
             <div class="mandala-bg"></div>
             <img src="https://png.pngtree.com/png-vector/20240602/ourmid/pngtree-ganpati-sri-ganesh-gradient-golden-stroke-object-png-image_12596228.png" class="hero-ganesh">
             
-            <div style="margin: 30px 0; opacity: 0.9;">
-                <p class="font-marathi text-glow" style="margin:8px; font-size: 1.1rem;">|| श्री गणेशाय नमः ||</p>
-                <p class="font-marathi text-glow" style="margin:8px; font-size: 1.1rem;">|| माँ तुळजाभवानी प्रसन्न ||</p>
-                <p class="font-marathi text-glow" style="margin:8px; font-size: 1.1rem;">|| महाकाली माँ प्रसन्न ||</p>
+            <div style="margin: 20px 0; opacity: 0.9; z-index: 10;">
+                <p class="font-marathi text-glow" style="margin:5px; font-size: 1rem;">|| श्री गणेशाय नमः ||</p>
+                <p class="font-marathi text-glow" style="margin:5px; font-size: 1rem;">|| माँ तुळजाभवानी प्रसन्न ||</p>
+                <p class="font-marathi text-glow" style="margin:5px; font-size: 1rem;">|| महाकाली माँ प्रसन्न ||</p>
             </div>
 
-            <div id="greeting" style="font-family:'Cormorant Garamond'; letter-spacing: 1px; color:var(--gold); font-size:1.5rem; margin-top:10px; min-height:30px; font-weight: 600;"></div>
+            <div id="greeting" style="font-family:'Cormorant Garamond'; letter-spacing: 1px; color:var(--gold); font-size:1.5rem; min-height:30px; font-weight: 600; z-index: 10;"></div>
 
             <h1 class="hero-names font-script">Shivani <br>&<br> Ravi</h1>
-            <p class="font-aesthetic" style="font-size: 1.4rem; border-bottom: 2px solid var(--gold); padding-bottom: 10px; display:inline-block; margin-top: 10px; color: #fff;">February 12, 2026</p>
+            <p class="font-aesthetic" style="font-size: 1.2rem; border-bottom: 2px solid var(--gold); padding-bottom: 8px; display:inline-block; color: #fff;">February 12, 2026</p>
 
             <div id="countdown">
                 <div class="time-box"><span id="d" class="time-val">00</span><span class="time-lbl">Days</span></div>
@@ -240,9 +232,9 @@
         </header>
 
         <div class="container">
-            <div style="text-align:center; margin-bottom:60px; color:#ddd; line-height:2; font-size: 1.2rem;" data-aos="fade-up">
-                With the blessings of <strong>Late Nandlalji Mahule</strong> & <strong>Late Mahesh Mahule</strong>,<br>
-                <span style="color: var(--gold);">Mrs. Sunil Mahule</span> & <span style="color: var(--gold);">Mrs. Ramavtarji Mahule</span><br>
+            <div style="text-align:center; margin-bottom:60px; color:#ddd; line-height:2; font-size: 1.1rem; padding: 0 10px;" data-aos="fade-up">
+                With the blessings of <strong>Late Nandulalji Mahule</strong> & <strong>Sunil Mahule</strong>,<br>
+                <span style="color: var(--gold);">Late Ramavtarji Mahule</span> & <span style="color: var(--gold);">Late Maheshji Mahule</span><br>
                 solicit your gracious presence.
             </div>
 
@@ -251,9 +243,9 @@
                 <div class="ultra-card tilt-element" data-aos="fade-up" data-aos-delay="100">
                     <div class="card-inner">
                         <div class="card-img-container">
-                            <img src="https://i.ibb.co/W47m99s5/Picsart-26-01-20-18-30-21-442.png" class="card-img">
+                            <img src="https://png.pngtree.com/png-clipart/20230313/original/pngtree-yellow-haldi-hindi-typography-with-marigold-flower-and-leaf-vector-illustration-png-image_8986773.png" class="card-img">
                         </div>
-                        <h2 class="font-aesthetic text-glow" style="font-size: 2.2rem;">Haldi Ceremony</h2>
+                        <h2 class="font-aesthetic text-glow" style="font-size: 2rem;">Haldi Ceremony</h2>
                         
                         <div class="details-box">
                             <div class="details-row"><span class="icon">✦</span> <span>Thu, Feb 12, 2026</span></div>
@@ -266,9 +258,9 @@
                 <div class="ultra-card tilt-element" data-aos="fade-up" data-aos-delay="200">
                     <div class="card-inner">
                         <div class="card-img-container">
-                            <img src="https://i.ibb.co/LdfYD5bT/imgbin-887a839857bb5d361f800990974cd0f7.png" class="card-img" style="filter: drop-shadow(0 0 10px #fff);">
+                            <img src="https://png.pngtree.com/png-clipart/20250307/original/pngtree-wedding-couple-silhouette-vector-logo-in-white-background-png-image_20593796.png" class="card-img" style="filter: drop-shadow(0 0 10px #fff);">
                         </div>
-                        <h2 class="font-aesthetic text-glow" style="font-size: 2.2rem;">The Wedding</h2>
+                        <h2 class="font-aesthetic text-glow" style="font-size: 2rem;">The Wedding</h2>
                         
                         <div class="details-box">
                             <div class="details-row"><span class="icon">✦</span> <span>Thu, Feb 12, 2026</span></div>
@@ -280,16 +272,16 @@
 
             </div>
 
-            <div style="margin-top:100px; text-align:center;" data-aos="fade-up">
-                <h2 class="font-aesthetic text-glow" style="margin-bottom:30px; font-size: 2rem;">The Venue</h2>
-                <p style="color:#aaa; margin-bottom:30px; font-size: 1.1rem;">Plot No. 1025, Behind Lamba Petrol Pump, Budh Nagar, Nagpur</p>
-                <iframe src="https://www.google.com/maps/embed?pb=!4v1768915914852!6m8!1m7!1s-_l1yndbMGZmvvMXWdaw3w!2m2!1d21.17326407086028!2d79.1002221098169!3f130.3809683630298!4f0.08607888700387889!5f0.4000000000000002" allowfullscreen="" loading="lazy"></iframe>
+            <div style="margin-top:80px; text-align:center;" data-aos="fade-up">
+                <h2 class="font-aesthetic text-glow" style="margin-bottom:20px; font-size: 1.8rem;">The Venue</h2>
+                <p style="color:#aaa; margin-bottom:20px; font-size: 1rem;">Plot No. 1025, Behind Lamba Petrol Pump, Budh Nagar, Nagpur</p>
+                <iframe src="https://www.google.com/maps/search/?api=1&query=Lamba+Petrol+Pump+Budh+Nagar+Nagpur" allowfullscreen="" loading="lazy"></iframe>
                 <br><br>
-                <a href="https://maps.app.goo.gl/4BTJXr6KZFewri3o8" target="_blank" class="btn-gold">Open Map</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Plot+No.+1025,+Behind+Lamba+Petrol+Pump,+Budh+Nagar,+Nagpur" target="_blank" class="btn-gold">Open Map</a>
             </div>
 
-            <footer style="text-align:center; margin-top:80px; padding:40px; border-top:1px solid rgba(255,255,255,0.05); color:#777;">
-                <p style="font-size:1.1rem; color:var(--gold); letter-spacing: 1px; text-transform: uppercase;">Invited with Family</p>
+            <footer style="text-align:center; margin-top:60px; padding:30px; border-top:1px solid rgba(255,255,255,0.05); color:#777;">
+                <p style="font-size:1rem; color:var(--gold); letter-spacing: 1px; text-transform: uppercase;">Invited with Family</p>
                 <p style="margin-top: 10px;">Mahule Family © 2026</p>
             </footer>
         </div>
@@ -314,33 +306,22 @@
         window.addEventListener("mousemove", (e) => {
             const posX = e.clientX;
             const posY = e.clientY;
-
-            // Dot moves instantly
             cursorDot.style.left = `${posX}px`;
             cursorDot.style.top = `${posY}px`;
-
-            // Outline moves with delay
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
+            cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
         });
         
-        // Add hover effect to interactive elements
         const interactiveElements = document.querySelectorAll("button, a, input");
         interactiveElements.forEach(el => {
             el.addEventListener("mouseenter", () => {
-                cursorOutline.style.width = "60px";
-                cursorOutline.style.height = "60px";
+                cursorOutline.style.width = "60px"; cursorOutline.style.height = "60px";
                 cursorOutline.style.backgroundColor = "rgba(255, 215, 0, 0.1)";
             });
             el.addEventListener("mouseleave", () => {
-                cursorOutline.style.width = "40px";
-                cursorOutline.style.height = "40px";
+                cursorOutline.style.width = "40px"; cursorOutline.style.height = "40px";
                 cursorOutline.style.backgroundColor = "transparent";
             });
         });
-
 
         // 3. UNLOCK
         function unlock(){
