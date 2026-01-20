@@ -164,6 +164,39 @@
             .event-grid { gap: 40px; }
             * { cursor: auto !important; }
         }
+
+        /* GREETING BOX STYLE */
+.greeting-box {
+    border: 1px solid var(--gold);
+    border-radius: 15px; /* Rounded corners */
+    padding: 20px 30px;
+    margin: 20px auto; /* Centers it */
+    max-width: 90%;
+    width: auto;
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.2); /* Slight dark tint behind text */
+    box-shadow: 0 0 20px rgba(230, 207, 165, 0.1); /* Soft gold glow */
+}
+
+.greeting-namaste {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.greeting-sub {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+        
     </style>
 </head>
 <body>
@@ -288,18 +321,27 @@
         }, 300);
 
         // 2. UNLOCK
-        function unlock(){
-            let name = document.getElementById('guestName').value;
-            let greet = document.getElementById('greeting');
-            if(name) greet.innerHTML = `Namaste, ${name}`;
-            else greet.innerHTML = `Namaste, Dear Guest`;
+        function unlock() {
+    let name = document.getElementById('guestName').value;
+    let greet = document.getElementById('greeting');
+    
+    // Use "Guest" if no name is entered
+    let finalName = name.trim() ? name : "Guest";
 
-            document.getElementById('entry-screen').style.opacity=0;
-            setTimeout(()=>document.getElementById('entry-screen').style.display='none',1000);
+    // INJECT THE STYLED BOX
+    greet.innerHTML = `
+        <div class="greeting-box" data-aos="zoom-in">
+            <span class="greeting-namaste">Namaste, ${finalName}</span>
+            <span class="greeting-sub">You are invited with Family</span>
+        </div>
+    `;
 
-            let audio = document.getElementById('weddingMusic');
-            if(audio) { audio.volume=0.5; audio.play().catch(e=>console.log(e)); }
-        }
+    document.getElementById('entry-screen').style.opacity = 0;
+    setTimeout(() => document.getElementById('entry-screen').style.display = 'none', 1000);
+
+    let audio = document.getElementById('weddingMusic');
+    if (audio) { audio.volume = 0.5; audio.play().catch(e => console.log(e)); }
+}
 
         // 3. TIMER
         let dest = new Date('Feb 12, 2026 19:30:00').getTime();
