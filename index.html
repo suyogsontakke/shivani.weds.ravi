@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Shivani & Ravi | Royal Wedding Invitation</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&family=Rozha+One&display=swap" rel="stylesheet">
-    
+
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="https://png.pngtree.com/png-vector/20240602/ourmid/pngtree-ganpati-sri-ganesh-gradient-golden-stroke-object-png-image_12596228.png">
-    
+
     <style>
         :root {
             /* NEW BROWN THEME VARIABLES */
             --bg-deep: #2d1b15; /* Base Brown */
             /* Gradient: Lighter Mocha in center -> Dark Chocolate at edges */
             --bg-gradient: radial-gradient(circle at center, #5d4037 0%, #1f100b 100%); 
-            
+
             --gold: #e6cfa5; /* Champagne Gold (Softer than yellow) */
             --gold-dim: #8d6e63; /* Earthy brown for borders */
             --neon-gold: #fff8e1; /* Creamy white glow */
@@ -84,7 +84,7 @@
             border: 1px solid var(--gold-dim); border-radius: 15px; 
             box-shadow: 0 0 40px rgba(0,0,0,0.8); width: 90%; max-width: 400px; 
         }
-        
+
         .entry-input { 
             width: 100%; padding: 15px; margin: 25px 0; 
             background: rgba(255,255,255,0.05); border-radius: 50px; 
@@ -107,9 +107,9 @@
             text-align: center; position: relative; z-index: 2; 
             padding-top: 60px; padding-bottom: 40px;
         }
-        
+
         .hero-ganesh { width: 180px; animation: float 6s ease-in-out infinite; filter: drop-shadow(0 0 20px var(--gold-dim)); }
-        
+
         .hero-names { 
             font-size: 5rem; margin: 10px 0; line-height: 1.2; 
             /* Champagne Gold Gradient */
@@ -175,50 +175,40 @@
     <div id="petal-container"></div>
 
     <audio id="weddingMusic" loop>
-        <source src="alex warren - ordinary (wedding version) (lyrics).mp3" type="audio/mp3">
+        <source src="wedding.mp3" type="audio/mp3">
     </audio>
 
     <div id="entry-screen">
-        <div class="entry-box" data-aos="zoom-in" data-aos-duration="1200">
-            <h1 class="font-royal text-gradient" style="margin-bottom: 15px; font-size: 2rem;">Royal Invitation</h1>
-            <p style="color: #ccc; font-family: 'Montserrat'; font-size: 0.9rem;">To unlock, please enter your name:</p>
-            
-            <input type="text" id="guestNameInput" class="entry-input" placeholder="e.g. Rahul Sharma">
-            
-            <button class="btn-gold" onclick="enterWebsite()">Unlock Invitation 🕊️</button>
+        <div class="entry-box" data-aos="fade-in">
+            <h1 class="font-royal text-glow" style="font-size: 1.5rem; margin-bottom: 10px;">The Wedding Of</h1>
+            <h2 class="font-script" style="font-size: 3rem; margin: 10px 0; color: #fff;">Shivani & Ravi</h2>
+            <input type="text" id="guestName" class="entry-input" placeholder="Enter Your Name">
+            <button class="btn-gold" onclick="unlock()">Enter</button>
         </div>
     </div>
 
     <div id="main-content">
-        
         <header class="hero">
             <div class="mandala-bg"></div>
-
             <img src="https://png.pngtree.com/png-vector/20240602/ourmid/pngtree-ganpati-sri-ganesh-gradient-golden-stroke-object-png-image_12596228.png" class="hero-ganesh">
-            
-            <div class="shloka-box font-marathi">
-                <p class="shloka-text">|| श्री गणेशाय नमः ||</p>
-                <p class="shloka-text">|| माँ तुळजाभवानी प्रसन्न ||</p>
-                <p class="shloka-text">|| महाकाली माँ प्रसन्न ||</p>
+
+            <div style="margin: 20px 0; opacity: 0.9; z-index: 10;">
+                <p class="font-marathi text-glow" style="margin:5px; font-size: 1rem;">|| श्री गणेशाय नमः ||</p>
+                <p class="font-marathi text-glow" style="margin:5px; font-size: 1rem;">|| माँ तुळजाभवानी प्रसन्न ||</p>
+                <p class="font-marathi text-glow" style="margin:5px; font-size: 1rem;">|| महाकाली माँ प्रसन्न ||</p>
             </div>
 
-            <div id="personalGreeting" style="display:none;"></div>
+            <div id="greeting" style="font-family:'Cinzel'; letter-spacing: 1px; color:var(--gold); font-size:1.5rem; min-height:30px; font-weight: 600; z-index: 10;"></div>
 
-            <h1 class="hero-names font-script text-gradient">
-                Shivani <br><span style="font-size: 3rem; vertical-align: middle;">&</span><br> Ravi
-            </h1>
+            <h1 class="hero-names font-script">Shivani <br>&<br> Ravi</h1>
+            <p class="font-royal" style="font-size: 1.2rem; border-bottom: 2px solid var(--gold); padding-bottom: 8px; display:inline-block; color: #fff;">February 12, 2026</p>
 
-            <div class="font-royal" style="border-top: 2px solid var(--gold-secondary); border-bottom: 2px solid var(--gold-secondary); padding: 12px 40px; margin-top: 20px;">
-                February 12, 2026
-            </div>
-
-             <div id="countdown">
+            <div id="countdown">
                 <div class="time-box"><span id="d" class="time-val">00</span><span class="time-lbl">Days</span></div>
                 <div class="time-box"><span id="h" class="time-val">00</span><span class="time-lbl">Hrs</span></div>
                 <div class="time-box"><span id="m" class="time-val">00</span><span class="time-lbl">Mins</span></div>
                 <div class="time-box"><span id="s" class="time-val">00</span><span class="time-lbl">Secs</span></div>
             </div>
-            
         </header>
 
         <div class="container">
@@ -229,15 +219,17 @@
             </div>
 
             <div class="event-grid">
-                
+
                 <div class="ultra-card tilt-element" data-aos="fade-up" data-aos-delay="100">
                     <div class="card-inner">
                         <div class="card-img-container">
                             <img src="https://i.ibb.co/W47m99s5/Picsart-26-01-20-18-30-21-442.png" class="card-img">
                         </div>
                         <h2 class="font-royal text-glow" style="font-size: 1.8rem;">Haldi Ceremony</h2>
-                        
+
                         <div class="details-box">
+                            <div class="details-row"><span class="icon">✦</span> <span>Thu, Feb 12, 2026</span></div>
+                            <div class="details-row"><span class="icon">✦</span> <span>6:00 PM (Telwan)</span></div>
                             <div class="details-row"><span class="icon">✦</span> <span>Wed, Feb 11, 2026</span></div>
                             <div class="details-row"><span class="icon">✦</span> <span>Magamarti, 10:00 AM</span></div>
                             <div class="details-row"><span class="icon">✦</span> <span>Telwan, 2:00 PM</span></div>
@@ -253,9 +245,11 @@
                             <img src="https://i.postimg.cc/ZKDb5ftM/9eacb20e-ce6e-4453-8403-d358d41750ed.png" class="card-img" style="filter: drop-shadow(0 0 10px #fff);">
                         </div>
                         <h2 class="font-royal text-glow" style="font-size: 1.8rem;">The Wedding</h2>
-                        
+
                         <div class="details-box">
                             <div class="details-row"><span class="icon">✦</span> <span>Thu, Feb 12, 2026</span></div>
+                            <div class="details-row"><span class="icon">✦</span> <span>7:30 PM (Baraat)</span></div>
+                            <div class="details-row"><span class="icon">✦</span> <span>8:00 PM (Panigrahan)</span></div>
                             <div class="details-row"><span class="icon">✦</span> <span>Baraat, 7:30 PM</span></div>
                             <div class="details-row"><span class="icon">✦</span> <span>Panigrahan, 8:00 PM</span></div>
                         </div>
@@ -267,8 +261,10 @@
             <div style="margin-top:80px; text-align:center;" data-aos="fade-up">
                 <h2 class="font-royal text-glow" style="margin-bottom:20px; font-size: 1.8rem;">The Venue</h2>
                 <p style="color:#aaa; margin-bottom:20px; font-size: 1rem;">Plot No. 1025, Behind Lamba Petrol Pump, Budh Nagar, Nagpur</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.627685609384!2d79.0881553148858!3d21.16613898592476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c0f7b1b1b1b1%3A0x1b1b1b1b1b1b1b1b!2sBudh%20Nagar%2C%20Nagpur%2C%20Maharashtra%20440017!5e0!3m2!1sen!2sin!4v1645000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
                 <iframe src="https://www.google.com/maps/embed?pb=!4v1768935212883!6m8!1m7!1s3oLPGwN7l4ARzpbROLgkvQ!2m2!1d21.17413843743541!2d79.10365302672625!3f55.577069873335084!4f3.5233596027731835!5f0.4000000000000002" allowfullscreen="" loading="lazy"></iframe>
                 <br><br>
+                <a href="https://goo.gl/maps/YOUR_LINK_HERE" target="_blank" class="btn-gold">Open Map</a>
                 <a href="https://maps.app.goo.gl/EzLyiPfWL2pjHHBA8?g_st=atm" target="_blank" class="btn-gold">Open Map</a>
             </div>
 
@@ -297,10 +293,10 @@
             let greet = document.getElementById('greeting');
             if(name) greet.innerHTML = `Namaste, ${name}`;
             else greet.innerHTML = `Namaste, Dear Guest`;
-            
+
             document.getElementById('entry-screen').style.opacity=0;
             setTimeout(()=>document.getElementById('entry-screen').style.display='none',1000);
-            
+
             let audio = document.getElementById('weddingMusic');
             if(audio) { audio.volume=0.5; audio.play().catch(e=>console.log(e)); }
         }
